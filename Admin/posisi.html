@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pengaturan Posisi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-container">
+        <!-- Ganti 'logo.png' dengan path ke gambar logo perusahaan Anda -->
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+        <li class="active">
+          <a href="posisi.html">
+            <i class="fas fa-user-tag"></i> Pengaturan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="bahanbaku.html">
+            <i class="fas fa-boxes"></i> Inventaris Bahan Baku
+          </a>
+        </li>
+        <li>
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+        <li>
+          <a href="penugasan.html">
+            <i class="fas fa-tasks"></i> Penetapan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="produksi.html">
+            <i class="fas fa-cogs"></i> Laporan Produksi
+          </a>
+        </li>
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <h1>Pengaturan Posisi</h1>
+        <div class="admin-info">
+          <span>Admin</span>
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <div class="content">
+        <button class="btn-add" onclick="openModal()">
+          <i class="fas fa-plus"></i> Tambah Posisi
+        </button>
+        <div class="table-container">
+          <div class="table-header">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Cari posisi..."
+              id="searchInput"
+              onkeyup="filterTable()"
+            />
+            <span>Jumlah : 4</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Posisi</th>
+                <th>Hak Akses</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Admin</td>
+                <td>
+                  <ul>
+                    <li>Data Posisi</li>
+                    <li>Data Penugasan</li>
+                    <li>Data Produk</li>
+                    <li>Data Produksi</li>
+                    <li>Data Bahan Baku</li>
+                    <li>Data Pesanan</li>
+                    <li>Data Penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>2</td>
+                <td>Produksi</td>
+                <td>
+                  <ul>
+                    <li>Data penugasan</li>
+                    <li>Data bahan baku</li>
+                    <li>Data pesanan</li>
+                    <li>Data produksi</li>
+                  </ul>
+                </td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+
+              <tr>
+                <td>3</td>
+                <td>Agen</td>
+                <td>
+                  <ul>
+                    <li>Data penugasan</li>
+                    <li>Data produk</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Outlet</td>
+                <td>
+                  <ul>
+                    <li>Data penugasan</li>
+                    <li>Data produk</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <main>
+      <div id="modalForm" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2>Tambah Posisi Baru</h2>
+          <form id="addForm">
+            <div class="form-group">
+              <label for="namaPosisi">Nama Posisi</label>
+              <input
+                type="text"
+                id="namaPosisi"
+                name="namaPosisi"
+                placeholder="Masukkan nama posisi"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <div class="hak-akses">
+                <h3>Hak Akses</h3>
+                <div class="hak-akses-container">
+                  <div class="row g-3">
+                    <!-- Increased gap between columns -->
+                    <div class="col-md-6">
+                      <!-- Use col-md-3 for responsive design -->
+                      <label>Create</label>
+                      <div class="checkbox-group">
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Posisi"
+                        />
+                        Data Posisi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penugasan"
+                        />
+                        Data Penugasan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produk"
+                        />
+                        Data Produk
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produksi"
+                        />
+                        Data Produksi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Bahan Baku"
+                        />
+                        Data Bahan Baku
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Pesanan"
+                        />
+                        Data Pesanan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penjualan"
+                        />
+                        Data Penjualan
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Read</label>
+                      <div class="checkbox-group">
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Posisi"
+                        />
+                        Data Posisi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penugasan"
+                        />
+                        Data Penugasan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produk"
+                        />
+                        Data Produk
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produksi"
+                        />
+                        Data Produksi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Bahan Baku"
+                        />
+                        Data Bahan Baku
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Pesanan"
+                        />
+                        Data Pesanan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penjualan"
+                        />
+                        Data Penjualan
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Update</label>
+                      <div class="checkbox-group">
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Posisi"
+                        />
+                        Data Posisi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penugasan"
+                        />
+                        Data Penugasan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produk"
+                        />
+                        Data Produk
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produksi"
+                        />
+                        Data Produksi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Bahan Baku"
+                        />
+                        Data Bahan Baku
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Pesanan"
+                        />
+                        Data Pesanan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penjualan"
+                        />
+                        Data Penjualan
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <label>Delete</label>
+                      <div class="checkbox-group">
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Posisi"
+                        />
+                        Data Posisi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penugasan"
+                        />
+                        Data Penugasan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produk"
+                        />
+                        Data Produk
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Produksi"
+                        />
+                        Data Produksi
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Bahan Baku"
+                        />
+                        Data Bahan Baku
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Pesanan"
+                        />
+                        Data Pesanan
+                        <input
+                          type="checkbox"
+                          name="hakAkses"
+                          value="Data Penjualan"
+                        />
+                        Data Penjualan
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn-save">Simpan</button>
+          </form>
+        </div>
+      </div>
+      <script>
+        // Buka Modal
+        function openModal() {
+          document.getElementById("modalForm").style.display = "block";
+        }
+
+        // Tutup Modal
+        function closeModal() {
+          document.getElementById("modalForm").style.display = "none";
+        }
+
+        // Tambahkan Event Listener untuk Form Submit
+        document
+          .getElementById("addForm")
+          .addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            // Ambil nilai input
+            const namaPosisi = document.getElementById("namaPosisi").value;
+            const hakAkses = Array.from(
+              document.querySelectorAll(".checkbox-group input:checked")
+            ).map((checkbox) => checkbox.value);
+
+            if (!namaPosisi || hakAkses.length === 0) {
+              alert("Nama posisi dan hak akses harus diisi!");
+              return;
+            }
+
+            // Tambahkan baris ke tabel
+            const table = document.querySelector("tbody");
+            const row = document.createElement("tr");
+            row.innerHTML = `
+        <td>${table.rows.length + 1}</td>
+        <td>${namaPosisi}</td>
+        <td>
+          <ul>
+            ${hakAkses.map((hak) => `<li>${hak}</li>`).join("")}
+          </ul>
+        </td>
+        <td>
+        <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+          <button class="btn-action edit" >
+            <i class="fas fa-edit"></i>Edit
+          </button>
+          <button class="btn-action delete" >
+            <i class="fas fa-trash"></i>Hapus
+          </button>
+        </td>
+      `;
+            table.appendChild(row);
+
+            // Reset form dan tutup modal
+            document.getElementById("addForm").reset();
+            closeModal();
+          });
+
+        // Fungsi untuk menghapus baris
+        function deleteRow(button) {
+          const row = button.closest("tr");
+          row.remove();
+          renumberRows();
+        }
+
+        // Fungsi untuk mengedit baris (placeholder untuk logika tambahan)
+        function editRow(button) {
+          alert("Fungsi edit belum diterapkan!");
+        }
+
+        // Fungsi untuk memperbarui nomor baris setelah penghapusan
+        function renumberRows() {
+          const rows = document.querySelectorAll("tbody tr");
+          rows.forEach((row, index) => {
+            row.querySelector("td:first-child").textContent = index + 1;
+          });
+        }
+      </script>
+    </main>
+  </body>
+</html>

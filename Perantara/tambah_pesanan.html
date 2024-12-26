@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Pesanan</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <style>
+    /* Mengubah ukuran modal untuk bahan baku */
+    .modal-dialog {
+      max-width: 80%; /* Atur lebar modal menjadi 80% dari lebar layar */
+      width: 80%; /* Tentukan lebar modal */
+      height: auto; /* Tinggi otomatis */
+      margin: 30px auto; /* Menambahkan margin agar lebih proporsional */
+    }
+
+    .modal-content {
+      padding: 20px; /* Menambahkan padding di dalam modal */
+    }
+
+    .modal-header,
+    .modal-footer {
+      padding: 15px; /* Menambahkan padding pada header dan footer modal */
+    }
+
+    .modal-body {
+      font-size: 16px; /* Menambah ukuran font di dalam modal */
+      padding: 20px; /* Padding lebih banyak pada body modal */
+    }
+  </style>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo-container">
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+
+        <li>
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <h1>Data Pesanan</h1>
+      </div>
+      <div class="content">
+        <form id="pesananForm">
+          <div class="form-group">
+            <label for="atasNama">Atas Nama Pesanan</label>
+            <input type="text" id="atasNama" class="form-control" required />
+          </div>
+
+          <div class="form-group">
+            <label for="tanggalPesanan">Tanggal Pesanan</label>
+            <input
+              type="date"
+              id="tanggalPesanan"
+              class="form-control"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="jenisPesanan">Jenis Pesanan</label>
+            <select id="jenisPesanan" class="form-select" required>
+              <option value="Pesanan Baru">Pesanan Baru</option>
+              <option value="Isi Ulang">Isi Ulang</option>
+            </select>
+          </div>
+
+          <!-- Produk -->
+          <div class="form-group">
+            <label for="produk">Pilih Produk</label>
+            <button
+              type="button"
+              class="btn-action tambah"
+              onclick="openProductModal()"
+            >
+              <i class="fas fa-plus"></i> Tambah Produk
+            </button>
+            <div id="produkList" class="mt-3"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="totalHarga">Total Harga</label>
+            <input
+              type="text"
+              id="totalHarga"
+              class="form-control"
+              readonly
+              placeholder="Total Harga Pesanan"
+            />
+          </div>
+
+          <button type="submit" class="btn-add">
+            <i class="fas fa-save"></i> Simpan Pesanan
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Pilih Produk -->
+    <div id="productModal" class="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pilih Produk</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onclick="closeProductModal()"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="productSelect">Pilih Produk</label>
+            <select id="productSelect" class="form-select" multiple>
+              <option value="Kue Coklat">Kue Coklat - Rp. 50.000</option>
+              <option value="Kue Keju">Kue Keju - Rp. 60.000</option>
+              <option value="Kue Vanila">Kue Vanila - Rp. 45.000</option>
+              <option value="Kue Pandan">Kue Pandan - Rp. 55.000</option>
+              <option value="Kue Red Velvet">
+                Kue Red Velvet - Rp. 70.000
+              </option>
+              <option value="Kue Kopi">Kue Kopi - Rp. 65.000</option>
+            </select>
+            <div class="form-group mt-3">
+              <label for="productQuantity">Jumlah Produk</label>
+              <input
+                type="number"
+                id="productQuantity"
+                class="form-control"
+                placeholder="Jumlah Produk"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn-action tambah"
+              onclick="closeProductModal()"
+            >
+              Tutup
+            </button>
+            <button type="button" class="btn-add" onclick="addProductToOrder()">
+              Tambah Produk
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Fungsi membuka dan menutup modal
+      function openProductModal() {
+        document.getElementById("productModal").classList.add("show");
+        document.getElementById("productModal").style.display = "block";
+      }
+
+      function closeProductModal() {
+        document.getElementById("productModal").classList.remove("show");
+        document.getElementById("productModal").style.display = "none";
+      }
+
+      // Fungsi untuk menambahkan produk ke pesanan
+      function addProductToOrder() {
+        const selectedProducts =
+          document.getElementById("productSelect").selectedOptions;
+        const productListContainer = document.getElementById("produkList");
+        const quantity = document.getElementById("productQuantity").value;
+        let totalHarga = 0;
+
+        // Memastikan jumlah produk diisi
+        if (!quantity || quantity <= 0) {
+          alert("Harap masukkan jumlah produk");
+          return;
+        }
+
+        // Membersihkan list produk sebelumnya
+        productListContainer.innerHTML = "";
+
+        // Menambahkan produk yang dipilih ke dalam list
+        for (const option of selectedProducts) {
+          const div = document.createElement("div");
+          div.classList.add("selected-bahan-baku");
+          div.innerHTML = `${option.value} - Jumlah: ${quantity}`;
+          productListContainer.appendChild(div);
+
+          // Menambahkan harga produk ke total
+          if (option.value === "Kue Coklat") totalHarga += 50000 * quantity;
+          else if (option.value === "Kue Keju") totalHarga += 60000 * quantity;
+          else if (option.value === "Kue Vanila")
+            totalHarga += 45000 * quantity;
+          else if (option.value === "Kue Pandan")
+            totalHarga += 55000 * quantity;
+          else if (option.value === "Kue Red Velvet")
+            totalHarga += 70000 * quantity;
+          else if (option.value === "Kue Kopi") totalHarga += 65000 * quantity;
+        }
+
+        // Menampilkan total harga
+        document.getElementById("totalHarga").value =
+          "Rp. " + totalHarga.toLocaleString();
+
+        closeProductModal();
+      }
+    </script>
+  </body>
+</html>

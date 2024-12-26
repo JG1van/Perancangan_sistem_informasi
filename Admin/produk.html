@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katalog Produk</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-container">
+        <!-- Ganti 'logo.png' dengan path ke gambar logo perusahaan Anda -->
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a href="posisi.html">
+            <i class="fas fa-user-tag"></i> Pengaturan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="bahanbaku.html">
+            <i class="fas fa-boxes"></i> Inventaris Bahan Baku
+          </a>
+        </li>
+        <li class="active">
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+        <li>
+          <a href="penugasan.html">
+            <i class="fas fa-tasks"></i> Penetapan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="produksi.html">
+            <i class="fas fa-cogs"></i> Laporan Produksi
+          </a>
+        </li>
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <h1>Katalog Produk</h1>
+        <div class="admin-info">
+          <span>Admin</span>
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <div class="content">
+        <button class="btn-add" onclick="openModal()">
+          <i class="fas fa-plus"></i> Tambah Produk
+        </button>
+        <div class="table-container">
+          <div class="table-header">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Cari produk..."
+              id="searchInput"
+              onkeyup="filterTable()"
+            />
+            <span>Jumlah : 6</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Produk</th>
+                <th>Harga</th>
+                <th>Stok</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Kue Coklat</td>
+                <td>Rp. 50.000</td>
+                <td>25</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Kue Keju</td>
+                <td>Rp. 60.000</td>
+                <td>15</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Kue Vanila</td>
+                <td>Rp. 45.000</td>
+                <td>10</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Kue Pandan</td>
+                <td>Rp. 55.000</td>
+                <td>20</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Kue Red Velvet</td>
+                <td>Rp. 70.000</td>
+                <td>8</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <!-- Tambahan 10 baris data -->
+              <tr>
+                <td>6</td>
+                <td>Kue Kopi</td>
+                <td>Rp. 65.000</td>
+                <td>12</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div id="modalForm" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2>Tambah Produk Baru</h2>
+          <form id="addForm">
+            <div class="form-group">
+              <label for="namaProduk">Nama Produk</label>
+              <input
+                type="text"
+                id="namaProduk"
+                name="namaProduk"
+                placeholder="Masukkan nama produk"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="hargaProduk">Harga</label>
+              <input
+                type="number"
+                id="hargaProduk"
+                name="hargaProduk"
+                placeholder="Masukkan harga produk"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="stokProduk">Stok</label>
+              <input
+                type="number"
+                id="stokProduk"
+                name="stokProduk"
+                placeholder="Masukkan stok produk"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-save">Simpan</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Modal Management
+      function openModal() {
+        document.getElementById("modalForm").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("modalForm").style.display = "none";
+      }
+
+      // Form Submit Logic
+      document
+        .getElementById("addForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const namaProduk = document.getElementById("namaProduk").value;
+          const hargaProduk = document.getElementById("hargaProduk").value;
+          const stokProduk = document.getElementById("stokProduk").value;
+
+          const table = document.querySelector("tbody");
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+          <td>${table.rows.length + 1}</td>
+          <td>${namaProduk}</td>
+          <td>Rp. ${parseInt(hargaProduk).toLocaleString()}</td>
+          <td>${stokProduk}</td>
+          <td>
+            <button class="btn-action show"><i class="fas fa-eye"></i>Show</button>
+            <button class="btn-action edit"><i class="fas fa-edit"></i>Edit</button>
+            <button class="btn-action delete"><i class="fas fa-trash"></i>Hapus</button>
+          </td>
+        `;
+          table.appendChild(row);
+
+          document.getElementById("addForm").reset();
+          closeModal();
+        });
+    </script>
+  </body>
+</html>

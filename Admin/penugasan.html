@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Penetapan Posisi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-container">
+        <!-- Ganti 'logo.png' dengan path ke gambar logo perusahaan Anda -->
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a href="posisi.html">
+            <i class="fas fa-user-tag"></i> Pengaturan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="bahanbaku.html">
+            <i class="fas fa-boxes"></i> Inventaris Bahan Baku
+          </a>
+        </li>
+        <li>
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+        <li class="active">
+          <a href="penugasan.html">
+            <i class="fas fa-tasks"></i> Penetapan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="produksi.html">
+            <i class="fas fa-cogs"></i> Laporan Produksi
+          </a>
+        </li>
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <h1>Pembagian Penugasan</h1>
+        <div class="admin-info">
+          <span>Admin</span>
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <div class="content">
+        <button class="btn-add" onclick="openModal()">
+          <i class="fas fa-plus"></i> Tambah Pengguna
+        </button>
+        <div class="table-container">
+          <div class="table-header">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Cari penugasan..."
+              id="searchInput"
+              onkeyup="filterTable()"
+            />
+            <span>Jumlah : 7</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Pengguna</th>
+                <th>Posisi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Jonathan</td>
+                <td>Admin</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Gian</td>
+                <td>Agen</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Ivan</td>
+                <td>Outlet</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Sules</td>
+                <td>Outlet</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Tono</td>
+                <td>Agen</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Nama</td>
+                <td>Produksi</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Aminah</td>
+                <td>Agen</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <main>
+      <div id="modalForm" class="modal">
+        <div class="modal-content">
+          <span class="close-btn" onclick="closeModal()">&times;</span>
+          <h2>Tambah Penugasan Baru</h2>
+          <form id="addForm">
+            <div class="form-group">
+              <label for="namaPengguna">Nama Pengguna</label>
+              <input
+                type="text"
+                id="namaPengguna"
+                name="namaPengguna"
+                placeholder="Masukkan nama pengguna"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="jenisPosisi">Posisi</label>
+              <select id="jenisPosisi" name="jenisPosisi" required>
+                <option value="" disabled selected>Pilih Posisi</option>
+                <option value="Agen">Agen</option>
+                <option value="Produksi">Produksi</option>
+                <option value="Admin">Admin</option>
+                <option value="Outlet">Outlet</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="nikNib">NIK/NIB</label>
+              <input
+                type="text"
+                id="nikNib"
+                name="nikNib"
+                placeholder="Masukkan NIK (agen/pegawai) atau NIB (outlet)"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="nomorTelepon">Nomor Telepon</label>
+              <input
+                type="tel"
+                id="nomorTelepon"
+                name="nomorTelepon"
+                placeholder="Masukkan nomor telepon"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Masukkan email"
+              />
+            </div>
+            <div class="form-group">
+              <label for="lokasiPenetapan">Alamat</label>
+              <input
+                type="text"
+                id="lokasiPenetapan"
+                name="lokasiPenetapan"
+                placeholder="Masukkan Alamat"
+                required
+              />
+            </div>
+            <button type="submit" class="btn-save">Simpan</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Modal Management
+      function openModal() {
+        document.getElementById("modalForm").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("modalForm").style.display = "none";
+      }
+
+      // Form Submit Logic
+      document
+        .getElementById("addForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const namaPengguna = document.getElementById("namaPengguna").value;
+          const jenisPosisi = document.getElementById("jenisPosisi").value;
+          const nikNib = document.getElementById("nikNib").value;
+          const nomorTelepon = document.getElementById("nomorTelepon").value;
+          const email = document.getElementById("email").value;
+          const lokasiPenetapan =
+            document.getElementById("lokasiPenetapan").value;
+
+          const table = document.querySelector("tbody");
+          const row = document.createElement("tr");
+
+          // Create and append table cells for each input field
+          row.innerHTML = `
+            <td>${table.rows.length + 1}</td>
+            <td>${namaPengguna}</td>
+            <td>${jenisPosisi}</td>
+            <td>
+              <button class="btn-action show">
+                <i class="fas fa-eye"></i>Show
+              </button>
+              <button class="btn-action edit">
+                <i class="fas fa-edit"></i>Edit
+              </button>
+              <button class="btn-action delete">
+                <i class="fas fa-trash"></i>Hapus
+              </button>
+            </td>
+          `;
+
+          // Append the new row to the table
+          table.appendChild(row);
+
+          // Close the modal after submission
+          closeModal();
+
+          // Clear the form fields
+          document.getElementById("addForm").reset();
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Produksi</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+  </head>
+  <style>
+    /* Mengubah ukuran modal untuk bahan baku */
+    .modal-dialog {
+      max-width: 80%; /* Atur lebar modal menjadi 80% dari lebar layar */
+      width: 80%; /* Tentukan lebar modal */
+      height: auto; /* Tinggi otomatis */
+      margin: 30px auto; /* Menambahkan margin agar lebih proporsional */
+    }
+
+    .modal-content {
+      padding: 20px; /* Menambahkan padding di dalam modal */
+    }
+
+    .modal-header,
+    .modal-footer {
+      padding: 15px; /* Menambahkan padding pada header dan footer modal */
+    }
+
+    .modal-body {
+      font-size: 16px; /* Menambah ukuran font di dalam modal */
+      padding: 20px; /* Padding lebih banyak pada body modal */
+    }
+  </style>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="logo-container">
+        <!-- Ganti 'logo.png' dengan path ke gambar logo perusahaan Anda -->
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a href="posisi.html">
+            <i class="fas fa-user-tag"></i> Pengaturan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="bahanbaku.html">
+            <i class="fas fa-boxes"></i> Inventaris Bahan Baku
+          </a>
+        </li>
+        <li>
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+        <li>
+          <a href="penugasan.html">
+            <i class="fas fa-tasks"></i> Penetapan Posisi
+          </a>
+        </li>
+        <li class="active">
+          <a href="produksi.html">
+            <i class="fas fa-cogs"></i> Laporan Produksi
+          </a>
+        </li>
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <div class="header">
+        <h1>Tambah Produksi</h1>
+      </div>
+      <div class="content">
+        <form id="produksiForm">
+          <div class="form-group">
+            <label for="tanggalProduksi">Tanggal Produksi</label>
+            <input
+              type="date"
+              id="tanggalProduksi"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="produk">Produk</label>
+            <select id="produk" class="form-select" required>
+              <option value="" disabled selected>Pilih produk</option>
+              <option value="Kue Coklat">Kue Coklat</option>
+              <option value="Kue Keju">Kue Keju</option>
+              <option value="Kue Vanila">Kue Vanila</option>
+              <option value="Kue Pandan">KKue Pandan</option>
+              <option value="Kue Red Velvet">Kue Red Velvet</option>
+              <option value="Kue Kopi">Kue Kopi</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="jumlahProduksi">Jumlah Produksi</label>
+            <input
+              type="number"
+              id="jumlahProduksi"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="bahanBaku">Bahan Baku yang Digunakan</label>
+            <div id="bahanBakuContainer"></div>
+            <button
+              type="button"
+              class="btn-action tambah"
+              onclick="openBahanBakuModal()"
+            >
+              <i class="fas fa-plus"></i> Tambah Bahan Baku
+            </button>
+          </div>
+          <button
+            type="submit"
+            class="btn-add"
+            onclick="window.location.href='produksi.html'"
+          >
+            <i class="fas fa-save"></i> Simpan Produksi
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Modal Pilih Bahan Baku -->
+    <div id="bahanBakuModal" class="modal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pilih Bahan Baku</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onclick="closeBahanBakuModal()"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <label for="bahanBakuSelect">Pilih Bahan Baku</label>
+            <select id="bahanBakuSelect" class="form-select" multiple>
+              <option value="Tepung">Tepung</option>
+              <option value="Gula">Gula</option>
+              <option value="Coklat">Coklat</option>
+              <option value="Mentega">Mentega</option>
+              <option value="Vanili">Vanili</option>
+              <option value="Telur">Telur</option>
+            </select>
+            <div class="form-group mt-3">
+              <label for="jumlahBahan">Jumlah Bahan Baku</label>
+              <input
+                type="number"
+                id="jumlahBahan"
+                class="form-control"
+                placeholder="Jumlah Bahan Baku"
+                required
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn-action tambah"
+              onclick="closeBahanBakuModal()"
+            >
+              Tutup
+            </button>
+            <button type="button" class="btn-add" onclick="addBahanBaku()">
+              Tambah
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      // Script untuk membuka dan menutup modal
+      function openBahanBakuModal() {
+        document.getElementById("bahanBakuModal").classList.add("show");
+        document.getElementById("bahanBakuModal").style.display = "block";
+      }
+
+      function closeBahanBakuModal() {
+        document.getElementById("bahanBakuModal").classList.remove("show");
+        document.getElementById("bahanBakuModal").style.display = "none";
+      }
+
+      // Fungsi untuk menambahkan bahan baku yang dipilih
+      function addBahanBaku() {
+        const selectedBahanBaku =
+          document.getElementById("bahanBakuSelect").selectedOptions;
+        const bahanBakuContainer =
+          document.getElementById("bahanBakuContainer");
+        const jumlahBahan = document.getElementById("jumlahBahan").value;
+
+        // Memastikan jumlah bahan baku diisi
+        if (!jumlahBahan || jumlahBahan <= 0) {
+          alert("Harap masukkan jumlah bahan baku");
+          return;
+        }
+
+        // Menambahkan bahan baku yang dipilih ke dalam container
+        for (const option of selectedBahanBaku) {
+          const div = document.createElement("div");
+          div.classList.add("selected-bahan-baku");
+          div.innerHTML = `<span>${option.value}</span> - Jumlah: ${jumlahBahan}`;
+          bahanBakuContainer.appendChild(div);
+        }
+
+        // Menutup modal setelah bahan baku ditambahkan
+        closeBahanBakuModal();
+      }
+    </script>
+  </body>
+</html>

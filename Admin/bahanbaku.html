@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inventori Bahan Baku</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="styles.css" rel="stylesheet" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-container">
+        <!-- Ganti 'logo.png' dengan path ke gambar logo perusahaan Anda -->
+        <img src="logo.png" alt="Logo Perusahaan" class="logo" />
+      </div>
+      <ul>
+        <li>
+          <a href="dashboard.html"> <i class="fas fa-home"></i> Dashboard </a>
+        </li>
+        <li>
+          <a href="posisi.html">
+            <i class="fas fa-user-tag"></i> Pengaturan Posisi
+          </a>
+        </li>
+        <li class="active">
+          <a href="bahanbaku.html">
+            <i class="fas fa-boxes"></i> Inventaris Bahan Baku
+          </a>
+        </li>
+        <li>
+          <a href="produk.html"> <i class="fas fa-tags"></i> Daftar Produk </a>
+        </li>
+        <li>
+          <a href="penugasan.html">
+            <i class="fas fa-tasks"></i> Penetapan Posisi
+          </a>
+        </li>
+        <li>
+          <a href="produksi.html">
+            <i class="fas fa-cogs"></i> Laporan Produksi
+          </a>
+        </li>
+        <li>
+          <a href="pesanan.html">
+            <i class="fas fa-receipt"></i> Laporan Pesanan
+          </a>
+        </li>
+        <li>
+          <a href="penjualan.html">
+            <i class="fas fa-chart-line"></i> Laporan Penjualan
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <h1>Dashboard</h1>
+        <div class="admin-info">
+          <span>Admin</span>
+          <i class="fas fa-user-circle"></i>
+        </div>
+      </div>
+      <div class="content">
+        <button class="btn-add" onclick="openModal()">
+          <i class="fas fa-plus"></i> Tambah Bahan
+        </button>
+        <div class="table-container">
+          <div class="table-header">
+            <input
+              type="text"
+              class="search-bar"
+              placeholder="Cari bahan baku..."
+              id="searchInput"
+              onkeyup="filterTable()"
+            />
+            <span>Jumlah : 5</span>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Bahan</th>
+                <th>Stok</th>
+                <th>Satuan</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Tepung Terigu</td>
+                <td>50</td>
+                <td>Kg</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Gula Pasir</td>
+                <td>30</td>
+                <td>Kg</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Cokelat Bubuk</td>
+                <td>20</td>
+                <td>Kg</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Mentega</td>
+                <td>40</td>
+                <td>Kg</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Susu Bubuk</td>
+                <td>25</td>
+                <td>Kg</td>
+                <td>
+                  <button class="btn-action show">
+                    <i class="fas fa-eye"></i>Show
+                  </button>
+                  <button class="btn-action edit">
+                    <i class="fas fa-edit"></i>Edit
+                  </button>
+                  <button class="btn-action delete">
+                    <i class="fas fa-trash"></i>Hapus
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <script src="scripts.js"></script>
+  </body>
+  <main>
+    <div id="modalForm" class="modal">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2>Tambah Bahan Baru</h2>
+        <form id="addForm">
+          <div class="form-group">
+            <label for="namaBahan">Nama Bahan</label>
+            <input
+              type="text"
+              id="namaBahan"
+              name="namaBahan"
+              placeholder="Masukkan nama bahan"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="stokBahan">Stok</label>
+            <input
+              type="number"
+              id="stokBahan"
+              name="stokBahan"
+              placeholder="Masukkan jumlah stok"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="satuanBahan">Satuan</label>
+            <select id="satuanBahan" name="satuanBahan" required>
+              <option value="" disabled selected>Pilih satuan</option>
+              <option value="Kg">Kg</option>
+              <option value="Liter">Liter</option>
+              <option value="Butir">Butir</option>
+              <option value="Botol">Botol</option>
+            </select>
+          </div>
+          <button type="submit" class="btn-save">Simpan</button>
+        </form>
+      </div>
+    </div>
+    <script>
+      // Buka Modal
+      function openModal() {
+        document.getElementById("modalForm").style.display = "block";
+      }
+
+      // Tutup Modal
+      function closeModal() {
+        document.getElementById("modalForm").style.display = "none";
+      }
+
+      // Form Submit Event
+      document
+        .getElementById("addForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+          const namaBahan = document.getElementById("namaBahan").value;
+          const stokBahan = document.getElementById("stokBahan").value;
+          const satuanBahan = document.getElementById("satuanBahan").value;
+
+          // Logika untuk menambahkan data ke tabel
+          const table = document.querySelector("tbody");
+          const row = document.createElement("tr");
+          row.innerHTML = `
+              <td>${table.rows.length + 1}</td>
+              <td>${namaBahan}</td>
+              <td>${stokBahan}</td>
+              <td>${satuanBahan}</td>
+              <td>
+                <button class="btn-action show"><i class="fas fa-eye"></i>Show</button>
+                <button class="btn-action edit"><i class="fas fa-edit"></i>Edit</button>
+                <button class="btn-action delete"><i class="fas fa-trash"></i>Hapus</button>
+              </td>
+            `;
+          table.appendChild(row);
+
+          // Reset form dan tutup modal
+          document.getElementById("addForm").reset();
+          closeModal();
+        });
+    </script>
+  </main>
+</html>
