@@ -14,6 +14,15 @@
       rel="stylesheet"
     />
   </head>
+  <style>
+    table ul {
+      list-style: none;
+      padding: 0;
+    }
+    table {
+      font-size: 0.8rem;
+    }
+  </style>
   <body>
     <div class="sidebar">
       <div class="logo-container">
@@ -87,7 +96,10 @@
               <tr>
                 <th>No</th>
                 <th>Nama Posisi</th>
-                <th>Hak Akses</th>
+                <th>Create</th>
+                <th>Read</th>
+                <th>Update</th>
+                <th>Delete</th>
                 <th>Aksi</th>
               </tr>
             </thead>
@@ -95,17 +107,10 @@
               <tr>
                 <td>1</td>
                 <td>Admin</td>
-                <td>
-                  <ul>
-                    <li>Data Posisi</li>
-                    <li>Data Penugasan</li>
-                    <li>Data Produk</li>
-                    <li>Data Produksi</li>
-                    <li>Data Bahan Baku</li>
-                    <li>Data Pesanan</li>
-                    <li>Data Penjualan</li>
-                  </ul>
-                </td>
+                <td>Semua Data</td>
+                <td>Semua Data</td>
+                <td>Semua Data</td>
+                <td>Semua Data</td>
                 <td>
                   <button class="btn-action show">
                     <i class="fas fa-eye"></i>Show
@@ -124,9 +129,24 @@
                 <td>Produksi</td>
                 <td>
                   <ul>
-                    <li>Data penugasan</li>
+                    <li>Data produksi</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data penetapan posisi</li>
                     <li>Data bahan baku</li>
                     <li>Data pesanan</li>
+                    <li>Data produksi</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data produksi</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
                     <li>Data produksi</li>
                   </ul>
                 </td>
@@ -148,8 +168,26 @@
                 <td>Agen</td>
                 <td>
                   <ul>
-                    <li>Data penugasan</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data penetapan posisi</li>
                     <li>Data produk</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
                     <li>Data pesanan</li>
                     <li>Data penjualan</li>
                   </ul>
@@ -171,8 +209,26 @@
                 <td>Outlet</td>
                 <td>
                   <ul>
-                    <li>Data penugasan</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data penetapan posisi</li>
                     <li>Data produk</li>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
+                    <li>Data pesanan</li>
+                    <li>Data penjualan</li>
+                  </ul>
+                </td>
+                <td>
+                  <ul>
                     <li>Data pesanan</li>
                     <li>Data penjualan</li>
                   </ul>
@@ -229,9 +285,9 @@
                         <input
                           type="checkbox"
                           name="hakAkses"
-                          value="Data Penugasan"
+                          value="Data penetapan posisi"
                         />
-                        Data Penugasan
+                        Data penetapan posisi
                         <input
                           type="checkbox"
                           name="hakAkses"
@@ -276,9 +332,9 @@
                         <input
                           type="checkbox"
                           name="hakAkses"
-                          value="Data Penugasan"
+                          value="Data penetapan posisi"
                         />
-                        Data Penugasan
+                        Data penetapan posisi
                         <input
                           type="checkbox"
                           name="hakAkses"
@@ -323,9 +379,9 @@
                         <input
                           type="checkbox"
                           name="hakAkses"
-                          value="Data Penugasan"
+                          value="Data penetapan posisi"
                         />
-                        Data Penugasan
+                        Data penetapan posisi
                         <input
                           type="checkbox"
                           name="hakAkses"
@@ -370,9 +426,9 @@
                         <input
                           type="checkbox"
                           name="hakAkses"
-                          value="Data Penugasan"
+                          value="Data penetapan posisi"
                         />
-                        Data Penugasan
+                        Data penetapan posisi
                         <input
                           type="checkbox"
                           name="hakAkses"
@@ -414,84 +470,101 @@
           </form>
         </div>
       </div>
-      <script>
-        // Buka Modal
-        function openModal() {
-          document.getElementById("modalForm").style.display = "block";
-        }
-
-        // Tutup Modal
-        function closeModal() {
-          document.getElementById("modalForm").style.display = "none";
-        }
-
-        // Tambahkan Event Listener untuk Form Submit
-        document
-          .getElementById("addForm")
-          .addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            // Ambil nilai input
-            const namaPosisi = document.getElementById("namaPosisi").value;
-            const hakAkses = Array.from(
-              document.querySelectorAll(".checkbox-group input:checked")
-            ).map((checkbox) => checkbox.value);
-
-            if (!namaPosisi || hakAkses.length === 0) {
-              alert("Nama posisi dan hak akses harus diisi!");
-              return;
-            }
-
-            // Tambahkan baris ke tabel
-            const table = document.querySelector("tbody");
-            const row = document.createElement("tr");
-            row.innerHTML = `
-        <td>${table.rows.length + 1}</td>
-        <td>${namaPosisi}</td>
-        <td>
-          <ul>
-            ${hakAkses.map((hak) => `<li>${hak}</li>`).join("")}
-          </ul>
-        </td>
-        <td>
-        <button class="btn-action show">
-                    <i class="fas fa-eye"></i>Show
-                  </button>
-          <button class="btn-action edit" >
-            <i class="fas fa-edit"></i>Edit
-          </button>
-          <button class="btn-action delete" >
-            <i class="fas fa-trash"></i>Hapus
-          </button>
-        </td>
-      `;
-            table.appendChild(row);
-
-            // Reset form dan tutup modal
-            document.getElementById("addForm").reset();
-            closeModal();
-          });
-
-        // Fungsi untuk menghapus baris
-        function deleteRow(button) {
-          const row = button.closest("tr");
-          row.remove();
-          renumberRows();
-        }
-
-        // Fungsi untuk mengedit baris (placeholder untuk logika tambahan)
-        function editRow(button) {
-          alert("Fungsi edit belum diterapkan!");
-        }
-
-        // Fungsi untuk memperbarui nomor baris setelah penghapusan
-        function renumberRows() {
-          const rows = document.querySelectorAll("tbody tr");
-          rows.forEach((row, index) => {
-            row.querySelector("td:first-child").textContent = index + 1;
-          });
-        }
-      </script>
     </main>
+
+    <script>
+      // Buka Modal
+      function openModal() {
+        document.getElementById("modalForm").style.display = "block";
+      }
+
+      // Tutup Modal
+      function closeModal() {
+        document.getElementById("modalForm").style.display = "none";
+      }
+
+      // Fungsi untuk menambahkan posisi baru
+      document
+        .getElementById("addForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault();
+
+          const namaPosisi = document.getElementById("namaPosisi").value;
+          const hakAkses = Array.from(
+            document.querySelectorAll(".checkbox-group input:checked")
+          ).map((checkbox) => checkbox.value);
+
+          if (!namaPosisi || hakAkses.length === 0) {
+            alert("Nama posisi dan hak akses harus diisi!");
+            return;
+          }
+
+          const table = document.querySelector("tbody");
+          const row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${table.rows.length + 1}</td>
+            <td>${namaPosisi}</td>
+            <td>
+              <ul>${hakAkses.map((hak) => `<li>${hak}</li>`).join("")}</ul>
+            </td>
+            <td>
+              <button class="btn-action show" onclick="showDetails(this)">
+                <i class="fas fa-eye"></i>Show
+              </button>
+              <button class="btn-action edit" onclick="editRow(this)">
+                <i class="fas fa-edit"></i>Edit
+              </button>
+              <button class="btn-action delete" onclick="deleteRow(this)">
+                <i class="fas fa-trash"></i>Hapus
+              </button>
+            </td>
+          `;
+          table.appendChild(row);
+
+          document.getElementById("addForm").reset();
+          closeModal();
+        });
+
+      // Fungsi untuk menghapus baris
+      function deleteRow(button) {
+        const row = button.closest("tr");
+        row.remove();
+        renumberRows();
+      }
+
+      // Fungsi untuk mengedit baris
+      function editRow(button) {
+        const row = button.closest("tr");
+        const namaPosisi = row.children[1].textContent;
+        const hakAkses = Array.from(row.children[2].querySelectorAll("li")).map(
+          (li) => li.textContent
+        );
+
+        openModal();
+        document.getElementById("namaPosisi").value = namaPosisi;
+
+        // Reset checkboxes and check the appropriate ones
+        const checkboxes = document.querySelectorAll(".checkbox-group input");
+        checkboxes.forEach((checkbox) => {
+          checkbox.checked = hakAkses.includes(checkbox.value);
+        });
+
+        // Remove the row so the user can edit it
+        row.remove();
+      }
+
+      // Fungsi untuk menampilkan detail (optional)
+      function showDetails(button) {
+        alert("Tampilkan detail posisi di sini!");
+      }
+
+      // Fungsi untuk memperbarui nomor baris setelah penghapusan
+      function renumberRows() {
+        const rows = document.querySelectorAll("tbody tr");
+        rows.forEach((row, index) => {
+          row.querySelector("td:first-child").textContent = index + 1;
+        });
+      }
+    </script>
   </body>
 </html>
