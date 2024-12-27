@@ -106,19 +106,6 @@
             />
           </div>
 
-          <!-- Penugasan -->
-          <div class="form-group">
-            <label for="penugasan">Penugasan Karyawan</label>
-            <select id="penugasan" class="form-select" required>
-              <option value="" disabled selected>Pilih Karyawan</option>
-              <option value="Budi - Agen">Budi - Agen</option>
-              <option value="Siti - Admin">Siti - Admin</option>
-              <option value="Rina - Outlet">Rina - Outlet</option>
-              <option value="Joko - Agen">Joko - Agen</option>
-              <option value="Aminah - Admin">Aminah - Admin</option>
-            </select>
-          </div>
-
           <button type="submit" class="btn-add">
             <i class="fas fa-save"></i> Simpan Penjualan
           </button>
@@ -197,8 +184,6 @@
         document.getElementById("productModal").classList.remove("show");
         document.getElementById("productModal").style.display = "none";
       }
-      const selectedPenugasan = document.getElementById("penugasan").value;
-      console.log("Penugasan Karyawan:", selectedPenugasan);
 
       // Fungsi untuk menambahkan produk ke penjualan
       function addProductToOrder() {
