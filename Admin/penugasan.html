@@ -263,15 +263,6 @@
               />
             </div>
             <div class="form-group">
-              <label for="email">Email </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Masukkan email"
-              />
-            </div>
-            <div class="form-group">
               <label for="lokasiPenetapan">Alamat</label>
               <input
                 type="text"
@@ -281,6 +272,37 @@
                 required
               />
             </div>
+            <div class="form-group">
+              <label for="email">Email </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Masukkan email"
+              />
+            </div>
+            <!-- Tambahkan input password dan konfirmasi password di bawah input email -->
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Konfirmasi Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Masukkan konfirmasi password"
+                required
+              />
+            </div>
+
             <button type="submit" class="btn-save">Simpan</button>
           </form>
         </div>
@@ -302,7 +324,14 @@
         .getElementById("addForm")
         .addEventListener("submit", function (event) {
           event.preventDefault();
+          const password = document.getElementById("password").value;
+          const confirmPassword =
+            document.getElementById("confirmPassword").value;
 
+          if (password !== confirmPassword) {
+            alert("Password dan konfirmasi password tidak cocok.");
+            return;
+          }
           const namaPengguna = document.getElementById("namaPengguna").value;
           const jenisPosisi = document.getElementById("jenisPosisi").value;
           const nikNib = document.getElementById("nikNib").value;
