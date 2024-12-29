@@ -378,8 +378,8 @@ table th {
     position: relative;
     background-color: var(--warna4);
     margin: 5% auto;
-    padding: 25px;
-    width: 60%;
+    padding: 20px;
+    width: 85%;
     /* Default width */
     max-width: 1000px;
     /* Maximum width */
@@ -599,11 +599,15 @@ input[type="checkbox"] {
     align-items: center;
 }
 
+.hak-akses {
+    max-height: 1000px;
+}
+
 .hak-akses-container {
-    padding: 20px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
